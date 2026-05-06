@@ -188,12 +188,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 10. Contact Form ─────────────────────────────
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    form.addEventListener('submit', () => {
+      // Let Formspree handle the actual submission
+      // Just update the button visually before it navigates
       const btn = form.querySelector('button[type=submit]');
-      btn.textContent = 'Sent! ✓';
+      btn.textContent = 'Sending...';
       btn.style.background = 'linear-gradient(135deg, var(--green), var(--blue))';
-      setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; form.reset(); }, 3000);
     });
   }
 
