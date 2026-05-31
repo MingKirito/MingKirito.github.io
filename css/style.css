@@ -934,6 +934,106 @@ ul { list-style: none; }
 .social-link:hover { color: var(--white); }
 .social-link:hover::after { transform: scaleX(1); }
 
+/* ── What I'm Exploring ── */
+.exploring-sub {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  margin-top: -2rem;
+  margin-bottom: 3rem;
+  max-width: 560px;
+}
+.exploring-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.exploring-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.exploring-card:hover {
+  border-color: rgba(181,203,163,0.3);
+  transform: translateY(-4px);
+}
+.exploring-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  width: fit-content;
+  font-weight: 500;
+}
+.exploring-status::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.exploring-card:nth-child(odd) .exploring-status {
+  color: var(--blue);
+  background: rgba(168,202,223,0.12);
+  border: 1px solid rgba(168,202,223,0.25);
+}
+.exploring-card:nth-child(odd) .exploring-status::before {
+  background: var(--blue);
+  box-shadow: 0 0 6px var(--blue);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.exploring-card:nth-child(even) .exploring-status {
+  color: var(--green);
+  background: rgba(181,203,163,0.12);
+  border: 1px solid rgba(181,203,163,0.25);
+}
+.exploring-card:nth-child(even) .exploring-status::before {
+  background: var(--green);
+}
+/* Complete ones don't pulse */
+.exploring-card .exploring-status:not(:empty) { }
+
+.exploring-card h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--white);
+}
+.exploring-card p {
+  color: var(--white-dim);
+  font-size: 0.86rem;
+  line-height: 1.7;
+  flex: 1;
+}
+.exploring-card p strong {
+  color: var(--green);
+  font-weight: 500;
+}
+.exploring-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+.exp-tag {
+  font-size: 0.67rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  border: 1px solid var(--border);
+  background: var(--white-faint);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
 /* ── Toast notification ── */
 .toast {
   position: fixed;
@@ -1217,6 +1317,7 @@ ul { list-style: none; }
   .soft-skill-card.reverse { grid-template-columns: 1fr; }
   .soft-skill-card.reverse .soft-skill-photo { order: 0; }
   .soft-skill-photo img { height: 220px; }
+  .exploring-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
   .projects-grid { grid-template-columns: 1fr; }
@@ -1226,4 +1327,5 @@ ul { list-style: none; }
   .about-stats { gap: 1.5rem; }
   .footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   .languages-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .exploring-grid { grid-template-columns: 1fr; }
 }

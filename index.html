@@ -50,6 +50,7 @@
       <li><a href="#skills"     class="nav-link">Skills</a></li>
       <li><a href="#experience" class="nav-link">Experience</a></li>
       <li><a href="#projects"   class="nav-link">Projects</a></li>
+      <li><a href="#exploring"  class="nav-link">Exploring</a></li>
       <li><a href="#contact"    class="nav-link">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -63,6 +64,7 @@
       <li><a href="#skills"     class="mobile-link">Skills</a></li>
       <li><a href="#experience" class="mobile-link">Experience</a></li>
       <li><a href="#projects"   class="mobile-link">Projects</a></li>
+      <li><a href="#exploring"  class="mobile-link">Exploring</a></li>
       <li><a href="#contact"    class="mobile-link">Contact</a></li>
     </ul>
   </div>
@@ -196,11 +198,11 @@
           <div class="skill-category-icon">◈</div>
           <h3>AI / Data Tools</h3>
           <ul class="skill-list">
+            <li class="skill-item"><span class="skill-name">TensorFlow / Keras</span><div class="skill-bar"><div class="skill-fill" data-pct="72"></div></div></li>
             <li class="skill-item"><span class="skill-name">OpenCV / YOLOv8</span><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div></li>
             <li class="skill-item"><span class="skill-name">NumPy / Pandas</span><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div></li>
-            <li class="skill-item"><span class="skill-name">Claude / OpenAI / Gemini</span><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div></li>
-            <li class="skill-item"><span class="skill-name">OCR</span><div class="skill-bar"><div class="skill-fill" data-pct="72"></div></div></li>
-            <li class="skill-item"><span class="skill-name">RapidMiner</span><div class="skill-bar"><div class="skill-fill" data-pct="68"></div></div></li>
+            <li class="skill-item"><span class="skill-name">ChromaDB / RAG</span><div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div></li>
+            <li class="skill-item"><span class="skill-name">Claude / OpenAI / Gemini / Ollama</span><div class="skill-bar"><div class="skill-fill" data-pct="88"></div></div></li>
           </ul>
         </div>
 
@@ -209,10 +211,10 @@
           <h3>Platforms & Tools</h3>
           <ul class="skill-list">
             <li class="skill-item"><span class="skill-name">GitHub</span><div class="skill-bar"><div class="skill-fill" data-pct="85"></div></div></li>
+            <li class="skill-item"><span class="skill-name">JavaScript / HTML / CSS</span><div class="skill-bar"><div class="skill-fill" data-pct="82"></div></div></li>
             <li class="skill-item"><span class="skill-name">Godot Engine</span><div class="skill-bar"><div class="skill-fill" data-pct="80"></div></div></li>
             <li class="skill-item"><span class="skill-name">JIRA / Confluence / SAP</span><div class="skill-bar"><div class="skill-fill" data-pct="75"></div></div></li>
             <li class="skill-item"><span class="skill-name">MATLAB</span><div class="skill-bar"><div class="skill-fill" data-pct="65"></div></div></li>
-            <li class="skill-item"><span class="skill-name">Botpress</span><div class="skill-bar"><div class="skill-fill" data-pct="70"></div></div></li>
           </ul>
         </div>
 
@@ -409,27 +411,30 @@
 
       <div class="project-card">
         <div class="project-meta">
-          <span class="project-tag">RapidMiner</span>
-          <span class="project-tag">Predictive Analytics</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">ChromaDB</span>
+          <span class="project-tag">Ollama</span>
+          <span class="project-tag">RAG</span>
         </div>
-        <h3>Flight Delay Prediction Model</h3>
-        <p>Predictive analytics model built in RapidMiner to forecast flight delays based on historical and environmental data.</p>
+        <h3>Local RAG Pipeline</h3>
+        <p>A fully offline Retrieval-Augmented Generation pipeline. Embeds documents using SentenceTransformers, stores vectors in ChromaDB, retrieves semantically relevant chunks, and generates grounded answers via Mistral 7B running locally through Ollama — no API keys or cloud costs.</p>
         <div class="project-links">
-          <span class="project-no-link">Built in RapidMiner · No repo</span>
+          <a href="https://github.com/MingKirito" target="_blank" class="project-link">GitHub ↗</a>
         </div>
         <div class="project-number">04</div>
       </div>
 
       <div class="project-card">
         <div class="project-meta">
-          <span class="project-tag">Botpress</span>
           <span class="project-tag">HTML</span>
-          <span class="project-tag">AI Chatbot</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">JavaScript</span>
         </div>
-        <h3>AI Chatbot Integration</h3>
-        <p>Designed and implemented an AI chatbot using Botpress, integrated into an HTML webpage for interactive user support. (Hosting expired — Botpress free plan no longer active.)</p>
+        <h3>Personal Portfolio Website</h3>
+        <p>This portfolio — designed and built from scratch with vanilla HTML, CSS, and JavaScript. Features a custom planet cursor, drag-to-scroll with momentum, animated skill bars, tabbed sections, photo carousel, and a pastel gradient theme. Hosted on GitHub Pages.</p>
         <div class="project-links">
-          <span class="project-no-link">No longer hosted</span>
+          <a href="https://github.com/MingKirito/MingKirito.github.io" target="_blank" class="project-link">GitHub ↗</a>
+          <a href="https://MingKirito.github.io" target="_blank" class="project-link">Live ↗</a>
         </div>
         <div class="project-number">05</div>
       </div>
@@ -437,9 +442,87 @@
     </div>
   </section>
 
+  <!-- ═══════════════ EXPLORING ═══════════════ -->
+  <section class="section exploring theme-green" id="exploring">
+    <div class="section-label">05 — What I'm Exploring</div>
+    <h2 class="section-heading">
+      Always <em>learning</em> something new
+    </h2>
+    <p class="exploring-sub">Self-directed learning projects — things I'm building, breaking, and figuring out on my own.</p>
+
+    <div class="exploring-grid">
+
+      <div class="exploring-card">
+        <div class="exploring-status">In Progress</div>
+        <h3>Titanic Survival Predictor</h3>
+        <p>Binary classification on real, messy data. Cleaned missing values, engineered features, and trained a tuned Random Forest to <strong>81% accuracy</strong>.</p>
+        <div class="exploring-tags">
+          <span class="exp-tag">scikit-learn</span>
+          <span class="exp-tag">Pandas</span>
+          <span class="exp-tag">Feature Engineering</span>
+          <span class="exp-tag">GridSearch</span>
+          <span class="exp-tag">Confusion Matrix</span>
+        </div>
+      </div>
+
+      <div class="exploring-card">
+        <div class="exploring-status">In Progress</div>
+        <h3>House Price Regression</h3>
+        <p>Predicted California house prices using Linear Regression and Random Forest. Reduced MAE from <strong>$45k → $31k</strong> through feature scaling and model comparison.</p>
+        <div class="exploring-tags">
+          <span class="exp-tag">scikit-learn</span>
+          <span class="exp-tag">NumPy</span>
+          <span class="exp-tag">StandardScaler</span>
+          <span class="exp-tag">MAE / RMSE</span>
+          <span class="exp-tag">Regression</span>
+        </div>
+      </div>
+
+      <div class="exploring-card">
+        <div class="exploring-status">Complete</div>
+        <h3>Iris Neural Network</h3>
+        <p>Built first neural network from scratch using TensorFlow/Keras. Achieved <strong>100% test accuracy</strong> on 3-class flower classification.</p>
+        <div class="exploring-tags">
+          <span class="exp-tag">TensorFlow</span>
+          <span class="exp-tag">Keras</span>
+          <span class="exp-tag">Dense Layers</span>
+          <span class="exp-tag">Softmax</span>
+          <span class="exp-tag">One-hot Encoding</span>
+        </div>
+      </div>
+
+      <div class="exploring-card">
+        <div class="exploring-status">Complete</div>
+        <h3>MNIST Digit CNN</h3>
+        <p>Convolutional neural network that recognises handwritten digits with <strong>99.16% accuracy</strong> — only 84 mistakes out of 10,000 test samples.</p>
+        <div class="exploring-tags">
+          <span class="exp-tag">TensorFlow</span>
+          <span class="exp-tag">CNN</span>
+          <span class="exp-tag">Conv2D</span>
+          <span class="exp-tag">MaxPooling</span>
+          <span class="exp-tag">Dropout</span>
+        </div>
+      </div>
+
+      <div class="exploring-card">
+        <div class="exploring-status">In Progress</div>
+        <h3>IMDB Sentiment Analysis</h3>
+        <p>Bidirectional LSTM that classifies movie reviews as positive/negative with <strong>85% accuracy</strong>. Discovered model limitations with negation — the reason Transformers replaced LSTMs.</p>
+        <div class="exploring-tags">
+          <span class="exp-tag">PyTorch</span>
+          <span class="exp-tag">LSTM</span>
+          <span class="exp-tag">NLP</span>
+          <span class="exp-tag">Tokenization</span>
+          <span class="exp-tag">GPU Training</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ═══════════════ CONTACT ═══════════════ -->
   <section class="section contact theme-gradient" id="contact">
-    <div class="section-label">05 — Contact</div>
+    <div class="section-label">06 — Contact</div>
     <div class="contact-inner">
       <h2 class="section-heading center">
         Let's <em>work together</em>
