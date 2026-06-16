@@ -232,21 +232,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 11. DRAG TO SCROLL ────────────────────────────
   // ══════════════════════════════════════════════════
 
-  const dragArrow   = document.getElementById('dragArrow');
-  let isDragging    = false;
-  let lastPointerY  = 0;
-  let velocity      = 0;
-  let momentumID    = null;
+  const dragArrow      = document.getElementById('dragArrow');
+  let isDragging       = false;
+  let dragPending      = false;
+  let pointerDownY     = 0;
+  let pointerDownX     = 0;
+  let lastPointerY     = 0;
+  let velocity         = 0;
+  let momentumID       = null;
+  let isTextSelection  = false;
+  const DRAG_THRESHOLD = 6;
 
-  // Position arrow offset from planet (to the right)
   const ARROW_OFFSET_X = 26;
   const ARROW_OFFSET_Y = 0;
 
   function updateArrow(deltaY) {
-    // Place arrow beside the planet
     dragArrow.style.left = (mouseX + ARROW_OFFSET_X) + 'px';
     dragArrow.style.top  = (mouseY + ARROW_OFFSET_Y) + 'px';
-
     if (deltaY > 0.5) {
       dragArrow.classList.remove('going-up');
       dragArrow.classList.add('going-down');
@@ -260,41 +262,71 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target.closest('a, button, input, textarea, select, label')) return;
     if (e.pointerType === 'mouse' && e.button !== 0) return;
 
-    isDragging   = true;
+    // Detect if clicking on or near text node — allow selection
+    const node = e.target;
+    const hasText = node.innerText && node.innerText.trim().length > 0;
+    const isContentEl = ['P', 'H1', 'H2', 'H3', 'H4', 'SPAN', 'LI', 'TD', 'STRONG', 'EM'].includes(node.tagName);
+
+    isTextSelection = hasText && isContentEl;
+
+    dragPending  = true;
+    isDragging   = false;
+    pointerDownY = e.clientY;
+    pointerDownX = e.clientX;
     lastPointerY = e.clientY;
     velocity     = 0;
 
     if (momentumID) { cancelAnimationFrame(momentumID); momentumID = null; }
-    e.target.setPointerCapture?.(e.pointerId);
-    document.body.style.userSelect = 'none';
-    planet.classList.add('dragging');
-
-    // Show arrow at cursor position
-    dragArrow.style.left = (mouseX + ARROW_OFFSET_X) + 'px';
-    dragArrow.style.top  = (mouseY + ARROW_OFFSET_Y) + 'px';
-    dragArrow.classList.add('visible');
-
-    e.preventDefault();
-  }, { passive: false });
+  }, { passive: true });
 
   document.addEventListener('pointermove', (e) => {
+    if (!dragPending && !isDragging) return;
+
+    const movedY = Math.abs(e.clientY - pointerDownY);
+    const movedX = Math.abs(e.clientX - pointerDownX);
+
+    // If user is on a text element and moving mostly horizontal — it's a text selection, don't drag
+    if (isTextSelection && movedX > movedY) {
+      dragPending = false;
+      return;
+    }
+
+    // Also check if the browser has an active text selection growing
+    const sel = window.getSelection();
+    if (sel && sel.toString().length > 0 && isTextSelection) {
+      dragPending = false;
+      return;
+    }
+
+    if (!isDragging && movedY > DRAG_THRESHOLD) {
+      isDragging   = true;
+      dragPending  = false;
+      isTextSelection = false;
+      // Clear any accidental text selection that started
+      window.getSelection()?.removeAllRanges();
+      e.target.setPointerCapture?.(e.pointerId);
+      document.body.style.userSelect = 'none';
+      planet.classList.add('dragging');
+      dragArrow.style.left = (mouseX + ARROW_OFFSET_X) + 'px';
+      dragArrow.style.top  = (mouseY + ARROW_OFFSET_Y) + 'px';
+      dragArrow.classList.add('visible');
+    }
+
     if (!isDragging) return;
 
     const delta = lastPointerY - e.clientY;
     lastPointerY = e.clientY;
     velocity = delta;
-
     window.scrollBy({ top: delta, behavior: 'instant' });
     updateArrow(delta);
   }, { passive: true });
 
   function stopDrag() {
+    dragPending = false;
     if (!isDragging) return;
     isDragging = false;
     document.body.style.userSelect = '';
     planet.classList.remove('dragging');
-
-    // Hide arrow
     dragArrow.classList.remove('visible', 'going-down', 'going-up');
 
     let v = velocity * 6;

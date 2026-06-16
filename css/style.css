@@ -980,26 +980,24 @@ ul { list-style: none; }
   border-radius: 50%;
   flex-shrink: 0;
 }
-.exploring-card:nth-child(odd) .exploring-status {
-  color: var(--blue);
-  background: rgba(168,202,223,0.12);
-  border: 1px solid rgba(168,202,223,0.25);
-}
-.exploring-card:nth-child(odd) .exploring-status::before {
-  background: var(--blue);
-  box-shadow: 0 0 6px var(--blue);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-.exploring-card:nth-child(even) .exploring-status {
+.status-inprogress {
   color: var(--green);
   background: rgba(181,203,163,0.12);
   border: 1px solid rgba(181,203,163,0.25);
 }
-.exploring-card:nth-child(even) .exploring-status::before {
+.status-inprogress::before {
   background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse-dot 2s ease-in-out infinite;
 }
-/* Complete ones don't pulse */
-.exploring-card .exploring-status:not(:empty) { }
+.status-complete {
+  color: var(--blue);
+  background: rgba(168,202,223,0.12);
+  border: 1px solid rgba(168,202,223,0.25);
+}
+.status-complete::before {
+  background: var(--blue);
+}
 
 .exploring-card h3 {
   font-family: var(--font-display);
