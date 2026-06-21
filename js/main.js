@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateTrail();
 
   // Hover state
-  const interactives = document.querySelectorAll('a, button, input, textarea, .project-card, .skill-category');
+  const interactives = document.querySelectorAll('a, button, input, textarea, .project-card, .skill-tier, .skill-tag-pill');
   interactives.forEach(el => {
     el.addEventListener('mouseenter', () => planet.classList.add('hovering'));
     el.addEventListener('mouseleave', () => planet.classList.remove('hovering'));
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 4. Scroll Reveal ─────────────────────────────
   const revealEls = document.querySelectorAll(
-    '.reveal, .timeline-item, .skill-category, .project-card, .about-grid > *, .lang-item'
+    '.reveal, .timeline-item, .skill-tier, .project-card, .about-grid > *, .lang-item, .exploring-card'
   );
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── 9. Stagger cards ─────────────────────────────
   document.querySelectorAll('.project-card').forEach((c, i) => c.style.transitionDelay = `${i * 0.08}s`);
-  document.querySelectorAll('.skill-category').forEach((c, i) => c.style.transitionDelay = `${i * 0.1}s`);
+  document.querySelectorAll('.skill-tier').forEach((c, i) => c.style.transitionDelay = `${i * 0.12}s`);
 
   // ── 9a. About Me Photo Carousel ───────────────────
   const carouselImgs = document.querySelectorAll('.carousel-img');

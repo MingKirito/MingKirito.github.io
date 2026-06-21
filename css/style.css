@@ -512,8 +512,7 @@ ul { list-style: none; }
 
 .theme-pink .section-label { color: var(--pink); }
 .theme-pink .section-heading em { color: var(--pink); }
-.theme-pink .skill-category:hover { border-color: rgba(242,184,198,0.3); }
-.theme-pink .skill-category-icon { color: var(--pink); }
+.theme-pink .skill-tier:hover { border-color: rgba(242,184,198,0.3); }
 .theme-pink .languages-title { color: var(--pink); }
 .theme-pink .lang-pct { color: var(--pink); }
 
@@ -702,50 +701,70 @@ ul { list-style: none; }
 
 /* ── Skills ── */
 .skills { background: none; }
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+
+/* Skill Tiers — grouped tags, no bars */
+.skill-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }
-.skill-category {
+.skill-tier {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 2rem;
+  padding: 1.8rem 2rem;
   transition: border-color var(--transition), transform var(--transition);
 }
-.skill-category:hover {
-  border-color: rgba(242,184,198,0.25);
-  transform: translateY(-4px);
+.skill-tier:hover {
+  border-color: rgba(242,184,198,0.2);
+  transform: translateY(-2px);
 }
-.skill-category-icon {
-  font-size: 1.4rem;
-  color: var(--pink);
-  margin-bottom: 0.8rem;
-  font-family: monospace;
+.tier-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
 }
-.skill-category h3 {
+.tier-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tier-dot-comfortable { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.tier-dot-learning    { background: var(--blue);  box-shadow: 0 0 8px var(--blue); }
+.tier-dot-tools       { background: var(--pink);  box-shadow: 0 0 8px var(--pink); }
+
+.tier-header h3 {
   font-family: var(--font-display);
   font-weight: 400;
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
   color: var(--white);
 }
-.skill-list { display: flex; flex-direction: column; gap: 1rem; }
-.skill-item { display: flex; flex-direction: column; gap: 0.35rem; }
-.skill-name { font-size: 0.82rem; color: var(--white-dim); }
-.skill-bar {
-  height: 3px;
-  background: var(--white-faint);
-  border-radius: 999px;
-  overflow: hidden;
+.tier-desc {
+  font-size: 0.84rem;
+  color: var(--white-dim);
+  margin-bottom: 1.2rem;
 }
-.skill-fill {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--pink), var(--blue), var(--green));
+.tier-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.skill-tag-pill {
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  background: var(--white-faint);
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
   border-radius: 999px;
-  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+}
+.skill-tier:hover .skill-tag-pill { }
+.skill-tag-pill:hover {
+  border-color: rgba(242,184,198,0.35);
+  background: rgba(242,184,198,0.1);
+  transform: translateY(-2px);
 }
 
 /* ── Experience ── */
@@ -1302,13 +1321,26 @@ ul { list-style: none; }
   text-transform: none;
   font-size: 0.68rem;
 }
+.lang-item .skill-bar {
+  height: 3px;
+  background: var(--white-faint);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.lang-item .skill-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--pink), var(--blue), var(--green));
+  border-radius: 999px;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-image-placeholder { width: 220px; height: 270px; }
   .about-image-deco { width: 220px; height: 270px; }
-  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .skill-tiers { gap: 1.4rem; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .soft-skill-card,
@@ -1321,7 +1353,7 @@ ul { list-style: none; }
   .projects-grid { grid-template-columns: 1fr; }
   .project-card.featured { grid-column: auto; }
   .form-row { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: 1fr; }
+  .skill-tier { padding: 1.4rem 1.5rem; }
   .about-stats { gap: 1.5rem; }
   .footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   .languages-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
